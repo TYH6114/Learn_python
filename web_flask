@@ -1,0 +1,5 @@
+1. python
+	+ Khởi tạo một virtualenv : virtualenv name (common: venv)
+	+ Đi vào 1 virtualenv     : source venv/bin/active
+	+ Thoat khỏi virtualenv   : deactivate
+	+ Khởi tạo biến môi trường :export NAME=VALUE
