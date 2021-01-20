@@ -104,10 +104,212 @@ def almostIncreasingSequence(sequence):
         return False
 
 
-print(almostIncreasingSequence([3, 5, 67, 98, 3]))
 """
-Test 1: sum two number
+Test 8: matrixElementsSum
 """
+def matrixElementsSum(matrix1):
+    width = len(matrix1[0]) #4
+    height = len(matrix1) #3
+    total = 0
+    for i in range(width):
+        for j in range(height):
+            if matrix1[j][i] != 0:
+                total = total + matrix1[j][i]
+            else:
+                break
+    return total
+
+
 """
-Test 1: sum two number
+Test 9: allLongestStrings
 """
+
+def allLongestStrings(inputArray):
+     stack = []
+     length = 0
+     for i in inputArray:
+         if len(i) > length:
+             length = len(i)
+             stack.clear()
+             stack.append(i)
+         elif len(i) == length:
+             stack.append(i)
+     return stack
+
+
+"""
+Test 10: commonCharacterCount
+"""
+def commonCharacterCount(s1, s2):
+    s1 = [i for i in s1]
+    s2 = [i for i in s2]
+    s3 = list(set(s1).intersection(set(s2)))
+    same_count = 0
+    for i in s3:
+        same_count = same_count + s1.count(i) if s1.count(i) < s2.count(i) else same_count + s2.count(i)
+    return same_count
+
+def commonCharacterCount(s1, s2):
+    con = [min(s1.count(i), s2.count(i)) for i in set(s1)]
+    return sum(con)
+
+
+
+
+"""
+Test 11: isLucky
+"""
+import time
+
+def isLucky(n):
+    n = str(n)
+    length = len(n)
+    if length % 2 != 0:
+        return False
+    half_length = int(length/2)
+    n = [int(i) for i in n]
+    list1 = n[:half_length]
+    list2 = n[half_length:]
+    return sum(list1) == sum(list2)
+
+
+
+"""
+Test 12: sortByHeight
+"""
+def sortByHeight(a):
+    x = []
+    list = []
+    length = len(a)
+    for i in range(length):
+        if a[i] != -1:
+            x.append(i)
+            list.append(a[i])
+    list.sort()
+    j = 0
+    for i in x:
+        a[i] = list[j]
+        j = j + 1
+    return a
+'''
+ôn tập:
+    + hàm enumerate: gắn thêm giá trị đếm phía trước gia trị của mảng
+        
+'''
+
+
+
+"""
+Test 13: reverseInParentheses
+"""
+def reverseInParentheses(s):
+    length = len(s)
+    stack = []
+    list = []
+    for i in range(length):
+        if s[i] == '(':
+            stack.append(i)
+        elif s[i] == ')':
+            list.append(stack.pop())
+            list.append(i)
+    i = 0
+    length_list = len(list)
+    print
+    while i < length_list:
+        s = s[:list[i]] +"  " + s[(list[i] + 1 ): list[i + 1]][::-1] + s[(list[i + 1])+1:]
+        i += 2
+    return s.replace("  ","")
+
+
+"""
+Test 14: alternatingSums
+"""
+
+def alternatingSums(a):
+    return [ sum(a[::2]), sum(a[1::2])]
+
+"""
+Test 15: addBorder
+"""
+
+def addBorder(picture):
+    length = len(picture[0])
+    return ['*' * (length + 2)] + ["*" + i + "*" for i in picture ] + ['*' * (length + 2)]
+
+
+"""
+Test 16: areSimilar
+"""
+
+def areSimilar(a, b):
+    if len(a) != len(b):
+         return False
+    count = 0
+    for i, j in zip(a,b):
+        if i != j:
+            count = count + 1
+    if count > 2:
+        return False
+    a.sort()
+    b.sort()
+
+    for i, j in zip(a, b):
+        if i != j:
+            return False
+    return True
+
+
+"""
+Test 17: arrayChange
+"""
+def arrayChange(inputArray):
+    length = len(inputArray)
+    total = 0
+    for i in range(length - 1):
+        if inputArray[i] >= inputArray[i + 1]:
+            temp = inputArray[i] - inputArray[i + 1] + 1
+            total = total + temp
+            inputArray[i + 1] = inputArray[i] + 1
+    return total
+
+
+
+"""
+Test 18: palindromeRearranging
+"""
+
+def palindromeRearranging(inputString):
+    length = len(inputString)
+    check_list = list(set(inputString))
+    if length % 2 == 0:
+        for i in check_list:
+            if inputString.count(i) % 2 != 0:
+                return False
+    else:
+        count = 0
+        for i in check_list:
+            if inputString.count(i) % 2 != 0:
+                count = count + 1
+        if count > 1:
+            return False
+    return True
+
+
+"""
+Test 19: areEquallyStrong
+"""
+def areEquallyStrong(yourLeft, yourRight, friendsLeft, friendsRight):
+    return set([yourLeft, yourRight]) == set([friendsLeft, friendsRight])
+
+
+"""
+Test 20: arrayMaximalAdjacentDifference
+"""
+
+def arrayMaximalAdjacentDifference(inputArray):
+    length = len(inputArray)
+    list_after = [abs(inputArray[i] - inputArray[i+1]) for i in range(length - 1 )]
+    return max(list_after)
+
+
+
