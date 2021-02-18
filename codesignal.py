@@ -312,4 +312,27 @@ def arrayMaximalAdjacentDifference(inputArray):
     return max(list_after)
 
 
+#regrex in python
+'''
+findall(): list all parameter match with the text
+    ==> purpose: count the element match with your text in your head
+    
+search : search function searches the string for match, and return a match object if there is a match
+    ==> purpose: the exactly position of element in string
+
+split() :
+    ==> return list where the string has been split at each match  like string_name.split()
+
+sub() : 
+     ==> replace the element acive in string with other string 
+
+Metachacacters are characters with a special meaning (các ký tự có ý nghĩa đặc biệt)
+
+[]  : A set of chacracters   (in this list for developer defines by himsefl)
+
+\   : signals a special sequence (chứ ký ,dấu hiệu của các ký tự đặc biệt) (can also be used to escape special characters)
+
+.   : Any character (except newline character)
+'''
+
 
